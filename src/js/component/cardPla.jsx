@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardPer = (props) => { 
+const CardPla = (props) => { 
 
 
 
@@ -18,4 +18,4 @@ return (
 
 
 
-export default CardPer;
+export default CardPla;
