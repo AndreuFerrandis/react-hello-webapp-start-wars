@@ -1,10 +1,3 @@
-/* const characterImageUrls = {
-    "Luke Skywalker": "https://starwars-visualguide.com/assets/img/characters/1.jpg",
-    "Darth Vader": "https://ruta-de-la-imagen.com/darth-vader.jpg",
-    
-}; */
-
-
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -34,9 +27,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Kamino":"https://starwars-visualguide.com/assets/img/planets/10.jpg",
 			},
 			planets: [],
-			vehicles: []
-
-			
+			vehiclesImageUrls: {
+				"Sand Crawler":"https://starwars-visualguide.com/assets/img/vehicles/4.jpg",
+				"X-34 landspeeder":"https://starwars-visualguide.com/assets/img/vehicles/6.jpg",
+				"T-16 skyhopper":"https://starwars-visualguide.com/assets/img/vehicles/7.jpg",
+				"TIE/LN starfighter":"https://starwars-visualguide.com/assets/img/vehicles/8.jpg",
+				"Snowspeeder":"https://starwars-visualguide.com/assets/img/vehicles/14.jpg",
+				"AT-AT":"https://starwars-visualguide.com/assets/img/vehicles/18.jpg",
+				"TIE bomber":"https://starwars-visualguide.com/assets/img/vehicles/16.jpg",
+				"AT-ST":"https://starwars-visualguide.com/assets/img/vehicles/19.jpg",
+				"Storm IV Twin-Pod cloud car":"https://starwars-visualguide.com/assets/img/vehicles/20.jpg",
+				"Sail barge":"https://starwars-visualguide.com/assets/img/vehicles/24.jpg",
+			},
+			vehicles: [],
+			favorites:[]
+	
 		},
 		actions: {
 			getCharacters: () => {
@@ -60,15 +65,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getVehicles: () => { 
-				fetch ('https://www.swapi.tech/api/planets/')
+				fetch ('https://www.swapi.tech/api/vehicles/')
 				.then (response => response.json())
 				.then (data => {
-					setStore ({ vehicles: data })
-					console.log(data)
+					setStore ({ vehicles: data.results })
+					console.log(data.results)
 				})
 				.catch(error => console.log('Error:' , error));
-			}	
+			},
+			
+			addToFavorites: (name) => {
+				const { favorites } = getStore();
+				setStore({ favorites: [...favorites, name] });
 		}
+	}
 	};
 };
 
