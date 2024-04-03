@@ -1,0 +1,36 @@
+.planet-card {
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #c3ab70;
+    border-radius: 5px;
+    background-color: #322f2b;
+    color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background-color: #c3ab70;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.card-title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    color: #322f2b;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 15px;
+    background-color: #47443e;
+    color: #f4f4f4;
+}
+
+.list-group-item:nth-child(even) {
+    background-color: #3e3b36;
+}

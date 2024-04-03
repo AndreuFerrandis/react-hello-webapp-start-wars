@@ -29,46 +29,46 @@ export const Home = () => {
 	const { vehiclesImageUrls } = store;
 	
 	return(
-	<div className="text-center mt-5">
-		<h2>Characters</h2>
-		<div className="container text-center">
-  			<div className="row flex-row flex-nowrap overflow-auto">
-			  {store.characters.map((item, index) => {
-			return (
-      			<CardPer 
-				imageUrl={characterImageUrls[item.name]}
-				name={item.name}
-				key={index}
-				onAddToFavorites={actions.addToFavorites}/>
-			);
-		})}
-  			</div>
-		</div>	
-		<h2>Planets</h2>
-		<div className="container text-center">
-  			<div className="row flex-row flex-nowrap overflow-auto">
-			  {store.planets.map((item, index) => {
-			return (
-      			<CardPla 
-				imageUrl={planetsImageUrls[item.name]}
-				name={item.name}
-				key={index}/>
-			);
-		})}
-  			</div>
-		</div>
-		<h2>Vehicles</h2>
-		<div className="container text-center">
-  			<div className="row flex-row flex-nowrap overflow-auto">
-			  {store.vehicles.map((item, index) => {
-			return (
-      			<CardPla 
-				imageUrl={vehiclesImageUrls[item.name]}
-				name={item.name}
-				key={index}/>
-			);
-		})}
-  			</div>
-		</div>	  
-	</div>
+		<div className="text-center mt-5">
+    <h2 className="header">Characters</h2>
+    <div className="container text-center">
+        <div className="row flex-row flex-nowrap overflow-auto card-container">
+            {store.characters.map((item, index) => (
+                <CardPer 
+                    imageUrl={characterImageUrls[item.name]}
+                    name={item.name}
+                    uid={item.uid}
+                    key={index}
+                    onAddToFavorites={actions.addToFavorites}
+                />
+            ))}
+        </div>
+    </div>
+    <h2 className="header">Planets</h2>
+    <div className="container text-center">
+        <div className="row flex-row flex-nowrap overflow-auto card-container">
+            {store.planets.map((item, index) => (
+                <CardPla 
+                    imageUrl={planetsImageUrls[item.name]}
+                    name={item.name}
+                    uid={item.uid}
+                    key={index}
+                />
+            ))}
+        </div>
+    </div>
+    <h2 className="header">Vehicles</h2>
+    <div className="container text-center">
+        <div className="row flex-row flex-nowrap overflow-auto card-container">
+            {store.vehicles.map((item, index) => (
+                <CardVeh 
+                    imageUrl={vehiclesImageUrls[item.name]}
+                    name={item.name}
+                    uid={item.uid}
+                    key={index}
+                />
+            ))}
+        </div>
+    </div>      
+	</div>	
 )};

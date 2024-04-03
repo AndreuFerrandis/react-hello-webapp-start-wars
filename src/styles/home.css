@@ -1,0 +1,30 @@
+
+.header {
+    color: white; 
+    margin-top: 40px; 
+}
+
+
+.card-container {
+    margin-top: 20px; 
+    padding: 0 15px; 
+}
+
+.card-container .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card-container .col {
+    flex: 0 0 auto;
+}
+
+.card-container .col:first-child {
+    margin-left: 0;
+}
+
+.card-container .col:last-child {
+    margin-right: 0;
+}

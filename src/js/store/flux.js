@@ -14,6 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Obi-Wan Kenobi":"https://starwars-visualguide.com/assets/img/characters/10.jpg",
 			},
 			characters: [],
+			character:{},
 			planetsImageUrls: {
 				"Tatooine":"https://starwars-visualguide.com/assets/img/planets/10.jpg",
 				"Alderaan":"https://starwars-visualguide.com/assets/img/planets/2.jpg",
@@ -27,6 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Kamino":"https://starwars-visualguide.com/assets/img/planets/10.jpg",
 			},
 			planets: [],
+			planet: {},
 			vehiclesImageUrls: {
 				"Sand Crawler":"https://starwars-visualguide.com/assets/img/vehicles/4.jpg",
 				"X-34 landspeeder":"https://starwars-visualguide.com/assets/img/vehicles/6.jpg",
@@ -40,6 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Sail barge":"https://starwars-visualguide.com/assets/img/vehicles/24.jpg",
 			},
 			vehicles: [],
+			vehicle: {},
 			favorites:[]
 	
 		},
@@ -54,12 +57,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(error => console.log('Error:' , error)); 
 			},
 
+			getSingleCharacter: (uid) => {
+				fetch (`https://www.swapi.tech/api/people/${uid}`)
+				.then (response => response.json())
+				.then (data => {
+					setStore ({ character: data.result.properties  })
+					console.log(data)
+				})
+				.catch(error => console.log('Error:' , error)); 
+			},
+
 			getPlanets: () => {
 				fetch ('https://www.swapi.tech/api/planets/')
 				.then (response => response.json())
 				.then (data => {
 					setStore ({ planets: data.results })
 					console.log(data.results)
+				})
+				.catch(error => console.log('Error:' , error)); 
+			},
+
+			getSinglePlanet: (uid) => {
+				fetch (`https://www.swapi.tech/api/planets/${uid}`)
+				.then (response => response.json())
+				.then (data => {
+					setStore ({ planet: data.result.properties  })
+					console.log(data)
 				})
 				.catch(error => console.log('Error:' , error)); 
 			},
@@ -73,12 +96,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.catch(error => console.log('Error:' , error));
 			},
+
+			getSingleVehicle: (uid) => {
+				fetch (`https://www.swapi.tech/api/vehicles/${uid}`)
+				.then (response => response.json())
+				.then (data => {
+					setStore ({ vehicle: data.result.properties  })
+					console.log(data)
+				})
+				.catch(error => console.log('Error:' , error)); 
+			},
 			
 			addToFavorites: (name) => {
 				const { favorites } = getStore();
 				setStore({ favorites: [...favorites, name] });
+			},
+
+			removeFromFavorites: index => {
+				const updatedFavorites = [...getStore().favorites];
+				updatedFavorites.splice(index, 1);
+				setStore({ favorites: updatedFavorites });
+			}
 		}
-	}
 	};
 };
 

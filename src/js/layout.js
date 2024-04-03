@@ -6,7 +6,9 @@ import { Home } from "./views/home";
 
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
-
+import  CardSingle  from "./views/cardSingle.jsx"
+import  CardSinglePla  from "./views/cardSinglePla.jsx"
+import  CardSingleVeh  from "./views/cardSingleVeh.jsx"
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -17,19 +19,23 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
+		<div className="bg-black">
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						
+						<Route path="/cardSingle/:uid" element={<CardSingle />} />
+						<Route path="/cardSinglePla/:uid" element={<CardSinglePla />} />
+						<Route path="/cardSingleVeh/:uid" element={<CardSingleVeh />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
+		</div>
 		</div>
 	);
 };
